@@ -1,0 +1,177 @@
+{
+  "name": "vscode-discord",
+  "displayName": "vscode-discord",
+  "description": "Display your current project on vscode in discord with Rich Presence",
+  "version": "1.0.2",
+  "publisher": "maxerbox",
+  "engines": {
+    "vscode": "^1.18.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "discord.updatePresence",
+        "title": "Update presence",
+        "category": "Discord"
+      },
+      {
+        "command": "discord.enable",
+        "title": "Enable vscode discord in the current workspace",
+        "category": "Discord"
+      },
+      {
+        "command": "discord.disable",
+        "title": "Disable vscode discord in the current workspace",
+        "category": "Discord"
+      },
+      {
+        "command": "discord.reconnect",
+        "title": "Reconnect to the discord ipc socket",
+        "category": "Discord"
+      }
+    ],
+    "configuration": [
+      {
+        "title": "Vscode Discord configuration",
+        "type": "object",
+        "properties": {
+          "discord.clientID": {
+            "type": "string",
+            "default": "381795064944394249",
+            "description": "The client ID used to communicate with discord"
+          },
+          "discord.state": {
+            "type": "string",
+            "default": "Working on {projectName}",
+            "description": "The discord rpc state {projectName}: workspace name"
+          },
+          "discord.enable": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable vscode-discord"
+          },
+          "discord.showDebug": {
+            "type": "boolean",
+            "default": true,
+            "description": "Show the debugging icon in the rich presence when debugging"
+          },
+          "discord.debugIconText": {
+            "type": "string",
+            "default": "Debugging",
+            "description": "The small image debug text when debugging"
+          },
+          "discord.showElapsedTime": {
+              "type": "boolean",
+              "default": true,
+              "description": "Wether or not to show elapsed time on discord"
+          },
+          "discord.details": {
+            "type": "string",
+            "default": "Editing {filename}",
+            "description": "The discord rpc details {filename}: filename, {language} : language id"
+          },
+          "discord.vscodeIconText": {
+            "type": "string",
+            "default": "Visual Studio Code",
+            "description": "The small icon hint (smallImageText)"
+          },
+          "discord.languageIconText": {
+            "type": "string",
+            "default": "{language}",
+            "description": "The hint for the language icon (largeImageText) {language} : language id"
+          },
+          "discord.idle": {
+            "type": "string",
+            "default": "Idle",
+            "description": "The default text when there is no editor opened"
+          },
+          "discord.iconMap": {
+            "type": "object",
+            "default": {
+              ".c": "c",
+              ".htm": "html",
+              ".html": "html",
+              ".gitignore": "git",
+              ".js": "js",
+              ".json": "json",
+              ".md": "markdown",
+              ".py": "python",
+              "package.json": "npm",
+              ".ts": "typescript",
+              ".lua": "lua",
+              ".vue": "vue",
+              ".rs": "rust"
+            },
+            "description": "The icon map for the extension"
+          },
+          "discord.interval": {
+            "type": "integer",
+            "default": 3000,
+            "description": "The interval time to update the informations in ms"
+          }
+        }
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "discord.updatePresence",
+        "key": "",
+        "mac": ""
+      },
+      {
+        "command": "discord.enable",
+        "key": "",
+        "mac": ""
+      },
+      {
+        "command": "discord.disable",
+        "key": "",
+        "mac": ""
+      }
+    ]
+  },
+  "galleryBanner": {
+    "theme": "dark",
+    "color": "#C80000"
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^7.0.43",
+    "eslint": "^4.11.0",
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.6"
+  },
+  "keywords": [
+    "Discord",
+    "Rich",
+    "Presence"
+  ],
+  "bugs": {
+    "url": "https://github.com/maxerbox/vscode-discord/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxerbox/vscode-discord.git"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "discord-rpc": "^3.0.0-beta.2",
+    "string-template": "^1.0.0"
+  },
+  "optionalDependencies": {
+    "winreg": "^1.2.4"
+  },
+  "license": "ISC",
+  "icon": "icons/icon.png"
+}
